@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Product {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  productName  String
+  description  String
+  price        Decimal  @db.Decimal(10,2)
+  stockQuantity Int
+
+  categoryId   Int
+  category     Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@map("products")
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  categoryName String   @unique
+  description  String
+  isActive     Boolean  @default(true)
+
+  products     Product[]  // No `@relation` needed here
+
+  @@map("categories")
+}
+
+
+
