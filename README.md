@@ -8,7 +8,14 @@
 <h1 align="center">NestJS Clarivate Products Backend</h1>
 
 ## Description
-This repository hosts a URL shortener service developed using NestJS, a progressive Node.js framework. The primary purpose of this project is to shorten long URLs into concise, manageable links. Additionally, it offers analytical insights into the usage of these shortened URLs.
+This repository hosts a Products listing service developed using NestJS, a progressive Node.js framework. The primary purpose of this project is to shorten long URLs into concise, manageable links. Additionally, it offers analytical insights into the usage of these shortened URLs.
+
+## Pre-requisites
+1. Install Node.js (20.17.0 or higher)
+2. Have MySQL installed and running on your local machine (or use a cloud-based service)
+3. Create clarivate and clarivateShadow databases in your MySQL instance
+    1. For the main database: `CREATE DATABASE clarivate;`
+    2. For the shadow database: `CREATE DATABASE clarivateShadow;`
 
 ## Installation
 1. Clone the repository to your local machine:
@@ -26,10 +33,25 @@ cd clarivate-products-backend
 npm install
 ```
 
+## Create a env file
+1. Create a new file named `.env` in the root directory of the project
+2. Add the following environment variables to the file as shown in .env.example or .env.test:
+    1. DATABASE_URL
+    2. JWT_SECRET
+    3. JWT_EXPIRY
+    4. BASE_URL
+    5. SHADOW_DATABASE_URL
+
 ## Migrate schemas to the connected db
 ```bash 
 # Push migrations to db 
 npx prisma migrate deploy
+```
+
+## Run the seed command to populate the database with some example data
+```bash
+# Run the seed command to populate the database with some example data
+npm run prisma:seed
 ```
 
 ## Running the app
@@ -38,12 +60,6 @@ npx prisma migrate deploy
 npm run start:dev
 ```
 
-## Test
-```bash
-# e2e tests
-npm run test:e2e
-
-```
 
 ## Important API endpoints
 1. Get all Products
