@@ -60,6 +60,9 @@ npm run prisma:seed
 npm run start:dev
 ```
 
+## The backend will be running on `http://localhost:3333/`
+
+
 
 ## Important API endpoints
 1. Get all Products
