@@ -14,8 +14,8 @@ This repository hosts a Products listing service developed using NestJS, a progr
 1. Install Node.js (20.17.0 or higher)
 2. Have MySQL installed and running on your local machine (or use a cloud-based service)
 3. Create clarivate and clarivateShadow databases in your MySQL instance
-    1. For the main database: `CREATE DATABASE clarivate;`
-    2. For the shadow database: `CREATE DATABASE clarivateShadow;`
+    1. For the main database: `CREATE DATABASE mystore;`
+    2. For the shadow database: `CREATE DATABASE mystoreshadow;`
 
 ## Installation
 1. Clone the repository to your local machine:
